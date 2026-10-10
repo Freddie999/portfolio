@@ -4,7 +4,7 @@
 
 A concise entry point to my geospatial software, mapping infrastructure, and backend work. Independent engineering demonstrations, Geomersive work, and MUSA coursework are explicitly distinguished. Much of my professional work is proprietary.
 
-The landing page is `index.md` with a standalone responsive HTML layout served by GitHub Pages/Jekyll. No JavaScript, tracking, API keys, or build-time secrets are required for the landing page. Edit project links and copy there, then push to `main`; GitHub Pages builds the site.
+The landing page is `index.html` with a standalone responsive HTML layout served by GitHub Pages/Jekyll. No JavaScript, tracking, API keys, or build-time secrets are required for the landing page. Edit project links and copy there, then push to `main`; GitHub Pages builds the site.
 
 ## Attribution
 
