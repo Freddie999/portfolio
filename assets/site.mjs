@@ -25,29 +25,41 @@ if (canvas) {
   const context = canvas.getContext('2d');
   const toggle = document.querySelector('#field-toggle');
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
-  let paused = motion.matches, frame = 0, width = 0, height = 0, nodes = [], tick = 0;
+  let paused = motion.matches, frame = 0, width = 0, height = 0, nodes = [], lastTime = null;
   function resize() {
     const box = canvas.parentElement.getBoundingClientRect();
     width = box.width; height = box.height;
     const ratio = Math.min(devicePixelRatio || 1, 2);
     canvas.width = width * ratio; canvas.height = height * ratio;
     context.setTransform(ratio, 0, 0, ratio, 0, 0);
-    const count = Math.min(150, Math.max(45, Math.round(width / 12)));
-    nodes = Array.from({length: count}, (_,i) => ({x: ((i * 7919 + 73) % 1000) / 1000 * width, y: ((i * 3571 + 157) % 1000) / 1000 * height, phase: i * 1.7}));
+    const count = Math.min(240, Math.max(65, Math.round(width * height / 5500)));
+    nodes = Array.from({length: count}, (_,i) => {
+      const angle = i * 2.39996;
+      const speed = 9 + (i % 8) * 1.5;
+      return {x: ((i * 7919 + 73) % 1000) / 1000 * width, y: ((i * 3571 + 157) % 1000) / 1000 * height, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed};
+    });
     draw();
   }
   function draw() {
     context.clearRect(0,0,width,height);
-    const points = nodes.map(n => ({x:n.x + Math.sin(tick * .002 + n.phase) * 12,y:n.y + Math.cos(tick * .0025 + n.phase) * 9}));
-    const reach = Math.min(150,width*.14);
-    points.forEach((p,i) => {
-      for (let j=i+1;j<points.length;j++) { const q=points[j]; const d=Math.hypot(p.x-q.x,p.y-q.y); if (d<reach) {context.strokeStyle=`rgba(83,85,65,${(1-d/reach)*.16})`;context.lineWidth=.6;context.beginPath();context.moveTo(p.x,p.y);context.lineTo(q.x,q.y);context.stroke();} }
-      context.fillStyle = i%7===0 ? 'rgba(182,76,41,.47)' : 'rgba(58,65,48,.4)';context.beginPath();context.arc(p.x,p.y,i%7===0?1.2:.8,0,Math.PI*2);context.fill();
+    const reach = Math.min(155,Math.max(105,width*.12));
+    nodes.forEach((p,i) => {
+      for (let j=i+1;j<nodes.length;j++) { const q=nodes[j]; const d=Math.hypot(p.x-q.x,p.y-q.y); if (d<reach) {context.strokeStyle=`rgba(83,85,65,${(1-d/reach)*.36})`;context.lineWidth=.75;context.beginPath();context.moveTo(p.x,p.y);context.lineTo(q.x,q.y);context.stroke();} }
+      context.fillStyle = i%7===0 ? 'rgba(182,76,41,.8)' : 'rgba(58,65,48,.72)';context.beginPath();context.arc(p.x,p.y,i%7===0?1.6:1.1,0,Math.PI*2);context.fill();
     });
   }
-  let lastTime=0;
-  function animate(time) {if (paused || document.hidden) {frame=0;return;}if(time-lastTime>40){tick++;draw();lastTime=time;}frame=requestAnimationFrame(animate);}
-  function update() {toggle.textContent=paused?'PLAY FIELD':'PAUSE FIELD';toggle.setAttribute('aria-pressed',String(paused));if(frame)cancelAnimationFrame(frame);frame=0;if(!paused&&!document.hidden)frame=requestAnimationFrame(animate);}
+  function animate(time) {
+    if (paused || document.hidden) {frame=0;lastTime=null;return;}
+    // Elapsed seconds keep the same visible speed on every display refresh rate.
+    const elapsed = lastTime===null ? 0 : Math.min((time-lastTime)/1000,.05);lastTime=time;
+    for(const node of nodes){
+      node.x+=node.vx*elapsed;node.y+=node.vy*elapsed;
+      if(node.x<0||node.x>width){node.x=Math.max(0,Math.min(width,node.x));node.vx*=-1;}
+      if(node.y<0||node.y>height){node.y=Math.max(0,Math.min(height,node.y));node.vy*=-1;}
+    }
+    draw();frame=requestAnimationFrame(animate);
+  }
+  function update() {toggle.textContent=paused?'RESUME FIELD':'PAUSE FIELD';toggle.setAttribute('aria-pressed',String(paused));if(frame)cancelAnimationFrame(frame);frame=0;lastTime=null;if(!paused&&!document.hidden)frame=requestAnimationFrame(animate);}
   toggle.addEventListener('click',()=>{paused=!paused;update();});
   motion.addEventListener('change',()=>{paused=motion.matches;update();});
   document.addEventListener('visibilitychange',update);

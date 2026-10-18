@@ -31,7 +31,7 @@ The test suite checks project/source integrity, project-specific retrieval, out-
 
 ## Content and credits
 
-Project descriptions preserve academic context, team attribution, results, and limitations. Employer code and operational source datasets are not included. The portrait is Frederick's public GitHub avatar. Project thumbnails come from the existing portfolio and analytical outputs.
+Project descriptions preserve academic context, team attribution, results, and limitations. Employer code and operational source datasets are not included. The portrait is Frederick's LinkedIn profile photo. Project thumbnails come from the existing portfolio and analytical outputs.
 
 The visual direction was inspired by [Tarik Moody's portfolio](https://builds.tarikmoody.com/); this implementation, content, animation, and assistant are independently authored. No reference-site code, portrait, or project assets are copied. Historical theme copyright is preserved in [LICENSE.md](LICENSE.md).
 
