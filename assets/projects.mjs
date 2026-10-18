@@ -1,0 +1,79 @@
+export const projects = [
+  {
+    id: 'blood-shortcut', title: 'When blood takes a shortcut', short: 'A shorter route to care.',
+    domain: 'Mapping', type: 'Academic project', tools: ['JavaScript', 'Leaflet', 'GeoJSON'],
+    image: 'blood-shortcut.jpg', alt: 'The orange road route and turquoise flight path from Muhanga to Ruli in Rwanda.',
+    summary: 'An interactive story about the geography of medical delivery in Rwanda, told through road journeys and drone flight paths.',
+    question: 'What changes when urgently needed supplies can take a more direct route?',
+    approach: 'I adapted a scrolling-map structure into an authored geographic narrative. A persistent Leaflet map reveals precomputed GeoJSON scenes, route comparisons, consistent time classes, and a companion HTML table.',
+    result: 'A working story map that connects a close-up journey with a wider, screened set of 817 distribution-centre-to-site records.',
+    limit: 'Travel times are modeled outbound estimates, not observed complete deliveries. They do not measure lives saved at the mapped facilities. This independent course project relates to my prior work at Zipline.',
+    role: 'Narrative, map interactions, route-comparison presentation, and interpretation.',
+    demo: 'https://freddie999.github.io/story-map-project/', code: 'https://github.com/Freddie999/story-map-project',
+    source: 'https://freddie999.github.io/story-map-project/'
+  },
+  {
+    id: 'land-cover', title: 'Reading the landscape', short: 'Ten classes. Five experiments.',
+    domain: 'Machine learning', type: 'Academic project', tools: ['Python', 'PyTorch', 'CNN'],
+    image: 'land-cover.png', alt: 'Held-out confusion matrix for ten EuroSAT land-cover classes.',
+    summary: 'Testing what actually improves a satellite-image classifier: deeper features, augmentation, skip connections, and dropout.',
+    question: 'Which model and training changes help classify EuroSAT RGB image patches?',
+    approach: 'I compared five CNN configurations using a fixed stratified 70/15/15 split, seed, optimizer, and training budget. Normalization used training pixels only. Model and checkpoint selection used validation results before test evaluation.',
+    result: 'The selected augmented plain CNN classified 3,958 of 4,050 held-out images correctly: 97.73% accuracy and 0.9767 macro F1. Skip connections and dropout did not improve validation accuracy in this run.',
+    limit: 'One seed and a random image split. Similar or nearby scenes can cross partitions, so the score does not establish performance in a new region. Adapted from Xiaojiang Li’s course notebook.',
+    role: 'Experimental comparisons, validation-based selection, evaluation, and error analysis.',
+    demo: 'https://freddie999.github.io/MUSA-5080-portfolio/projects.html#land-cover', code: 'https://github.com/Freddie999/ai-urban-sustainability/blob/main/Homework4.ipynb',
+    source: 'https://github.com/Freddie999/ai-urban-sustainability/blob/main/Homework4.ipynb'
+  },
+  {
+    id: 'terrain-explorer', title: 'Terrain-aware route explorer', short: 'There is more to a route than distance.',
+    domain: 'Engineering', type: 'Independent demonstration', tools: ['JavaScript', 'Leaflet', 'Elevation'],
+    image: 'terrain-explorer.jpg', alt: 'Route explorer with a linked terrain profile and elevation metrics.',
+    summary: 'A linked map and elevation profile for comparing illustrative routes using public terrain data.',
+    question: 'How can a route’s elevation changes become something a person can inspect?',
+    approach: 'The interface samples public elevation data, links a route map with its profile, and exposes sampling distance, ascent, descent, grade, and CSV export. One bundled terrain tile keeps the demonstration reproducible.',
+    result: 'A working browser demo with local GeoJSON upload, route comparison, and documented calculations. Six tests cover mathematical helpers and data behavior.',
+    limit: 'The alignments are illustrative, not verified roads or trails. Terrain pixels are roughly 59 metres wide here. The tool does not optimize routes and is not a navigation or flight-planning system.',
+    role: 'Elevation sampling, calculation helpers, map/profile interface, export, and tests.',
+    demo: 'https://freddie999.github.io/terrain-route-explorer/', code: 'https://github.com/Freddie999/terrain-route-explorer',
+    source: 'https://github.com/Freddie999/terrain-route-explorer'
+  },
+  {
+    id: 'poverty-change', title: 'Verify the poverty claim', short: 'A change in an estimate is not the whole story.',
+    domain: 'Policy', type: 'Academic project', tools: ['R', 'tidycensus', 'Quarto'],
+    image: 'poverty-change.png', alt: 'Philadelphia tract counts by detectable increase, decrease, inconclusive change, and unavailable comparison.',
+    summary: 'Checking claims about Philadelphia poverty against the uncertainty in American Community Survey estimates.',
+    question: 'Which changes in poverty rates can be distinguished from sampling uncertainty?',
+    approach: 'I reconstructed a comparison of the 2006–2010 and 2013–2017 ACS periods, joined records by tract GEOID, calculated rates and uncertainty, and treated zero denominators as missing.',
+    result: 'Across 384 tracts: 36 significant increases, 27 significant decreases, 313 inconclusive changes, and eight unassessable comparisons. Tests use 90% confidence.',
+    limit: 'Individual tests are not adjusted for multiple comparisons. Tracts are not neighborhoods, and nonsignificance does not establish no change. These results do not establish a citywide or race-specific trend.',
+    role: 'Data reconstruction, uncertainty calculations, visual explanation, and policy interpretation.',
+    demo: 'https://freddie999.github.io/MUSA-5080-portfolio/assignments/assignment3.html', code: 'https://github.com/Freddie999/MUSA-5080-portfolio/blob/main/assignments/assignment3.qmd',
+    source: 'https://freddie999.github.io/MUSA-5080-portfolio/assignments/assignment3.html'
+  },
+  {
+    id: 'housing-values', title: 'What shapes housing values?', short: 'An urban pattern, examined carefully.',
+    domain: 'Policy', type: 'Team academic project', tools: ['R', 'Regression', 'Quarto'],
+    image: 'housing-values.png', alt: 'Logged median housing values across Philadelphia census block groups.',
+    summary: 'A team study combining regression, geographic diagnostics, and cross-validation on historical Philadelphia housing data.',
+    question: 'How are neighborhood characteristics associated with median housing values?',
+    approach: 'We analyzed 1,720 block groups from the supplied 2000 Census data, mapped predictors, fitted a multiple regression with a logged outcome, inspected residuals, and compared models using the same five folds.',
+    result: 'The four-predictor model explains about 66% of variation in logged house values. Cross-validation RMSE was 0.366440 log units versus 0.442722 for the vacancy-and-income model, a 17.2% reduction.',
+    limit: 'Historical, block-group-level associations do not establish causal effects or individual-house predictions. Spatially clustered errors can make random cross-validation optimistic. Team: Vincent Bio Bediako, Frederick Abalo, and Emmanuel Sampson; individual task allocation is not documented.',
+    role: 'Shared team report with Vincent Bio Bediako and Emmanuel Sampson.',
+    demo: 'https://freddie999.github.io/MUSA-5080-portfolio/reports/philadelphia-housing-values.html', code: 'https://github.com/Freddie999/MUSA-5080-portfolio/blob/main/reports/philadelphia-housing-values-source.qmd',
+    source: 'https://freddie999.github.io/MUSA-5080-portfolio/reports/philadelphia-housing-values.html'
+  },
+  {
+    id: 'spatial-api', title: 'Spatial-data validation API', short: 'A reliable boundary for spatial data.',
+    domain: 'Engineering', type: 'Independent demonstration', tools: ['Python', 'FastAPI', 'PostGIS'],
+    image: 'spatial-api.jpg', alt: 'Spatial validation API returning a synthetic GeoJSON feature.',
+    summary: 'A runnable service for validating GeoJSON, ingesting atomic batches, and querying a PostGIS database.',
+    question: 'How can a spatial API reject malformed or ambiguous geometry before it enters a system?',
+    approach: 'The service validates a bounded 2D WGS84 GeoJSON subset, inserts batches in one transaction, uses GiST-indexed intersection queries, and supports ID-based cursor pagination. Docker packages the local setup.',
+    result: 'A runnable service with interactive documentation and 26 tests, including real PostGIS integration checks for atomicity, pagination, and geometry behavior.',
+    limit: 'A local engineering demonstration using synthetic survey features. It does not provide authentication, tenant isolation, automatic geometry repair, reprojection, or a deployed public API.',
+    role: 'Validation, transactional ingestion, spatial queries, demonstration interface, and tests.',
+    demo: '', code: 'https://github.com/Freddie999/spatial-validation-api', source: 'https://github.com/Freddie999/spatial-validation-api'
+  }
+];

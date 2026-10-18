@@ -7,3 +7,10 @@ _site/
 # Bundler-generated folders
 .bundle/
 vendor/
+
+# Local development and credentials
+.DS_Store
+node_modules/
+.env
+.env.*
+!.env.example
