@@ -1,11 +1,27 @@
-# Frederick Abalo — engineering portfolio
+# Frederick Abalo — portfolio
 
-[Live portfolio](https://freddie999.github.io/portfolio/) · [GitHub profile](https://github.com/Freddie999)
+[Visit the portfolio](https://freddie999.github.io/portfolio/) · [GitHub profile](https://github.com/Freddie999)
 
-A concise entry point to my geospatial software, mapping infrastructure, and backend work. Independent engineering demonstrations, Geomersive work, and MUSA coursework are explicitly distinguished. Much of my professional work is proprietary.
+Selected work in geospatial software, interactive mapping, remote sensing, public policy, and statistics.
 
-The landing page is `index.html` with a standalone responsive HTML layout served by GitHub Pages/Jekyll. No JavaScript, tracking, API keys, or build-time secrets are required for the landing page. Edit project links and copy there, then push to `main`; GitHub Pages builds the site.
+## Featured projects
 
-## Attribution
+- **When blood takes a shortcut:** a JavaScript/Leaflet narrative about modeled medical-delivery accessibility in Rwanda.
+- **EuroSAT land-cover classification:** five CNN configurations, validation-based selection, held-out evaluation, and error analysis.
+- **Philadelphia poverty change:** ACS comparisons that account for sampling uncertainty.
+- **Philadelphia housing values:** a team regression study using historical block-group data.
+- **Spatial-data validation API** and **terrain-aware route explorer:** runnable software examples.
 
-This repository began with the MUSA portfolio template based on [Paul Le's Portfolio Jekyll Theme](https://github.com/LeNPaul/portfolio-jekyll-theme). The original theme assets and [license](LICENSE.md) are retained. Sample theme projects and posts are excluded from the published site; they are not my work. The engineering landing page and its project descriptions replace the starter presentation.
+## Local preview
+
+This is a static HTML/CSS site. Run a local HTTP server from the repository root, for example:
+
+```sh
+uv run --no-project python -m http.server 8000
+```
+
+GitHub Pages serves the root of main. A .nojekyll file disables theme processing. No build step or API key is required.
+
+## Credits
+
+Academic sources and team members are identified in each linked report. Historical theme copyright is preserved in [LICENSE.md](LICENSE.md).
