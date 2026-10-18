@@ -27,7 +27,7 @@ test('Every generated page resolves local assets and routes under GitHub Pages',
   for(const file of files){const text=fs.readFileSync(file,'utf8');assert.match(text,/<h1[ >]/,file);assert.match(text,/aria-labelledby="assistant-title"/,file);
     for(const [,value] of text.matchAll(/(?:href|src)="([^"]+)"/g)){
       if(/^(https?:|mailto:|data:|#)/.test(value))continue;
-      const clean=decodeURIComponent(value.split('#')[0]);const target=clean.startsWith('/portfolio/')?path.resolve(root,clean.slice(11)):path.resolve(path.dirname(file),clean);
+      const clean=decodeURIComponent(value.split(/[?#]/)[0]);const target=clean.startsWith('/portfolio/')?path.resolve(root,clean.slice(11)):path.resolve(path.dirname(file),clean);
       assert.ok(target.startsWith(root),`${file}: escaping local path`);assert.ok(fs.existsSync(target),`${file}: missing ${value}`);
       if(fs.statSync(target).isDirectory())assert.ok(fs.existsSync(path.join(target,'index.html')),`${file}: missing directory index ${value}`);
     }
