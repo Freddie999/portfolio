@@ -113,6 +113,7 @@ export const projects = [
     "NumPy"
   ],
   "image": "shadow-simulation.png",
+  "animation": ["08", "09", "10", "11", "12", "13", "14", "15", "16", "17"],
   "alt": "Simulated noon shadows across a Philadelphia surface-model tile on September 15, 2025, with shadow and sunlit areas labeled.",
   "summary": "A GPU-based ray-casting simulation of hourly shadows across a Philadelphia digital surface model.",
   "question": "How does the pattern of shade change across a Philadelphia surface-model tile during the day?",

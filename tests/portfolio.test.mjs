@@ -40,7 +40,7 @@ test('Every generated page resolves local assets and routes under GitHub Pages',
 });
 test('Project records have distinct case studies and inspectable sources',()=>{
   assert.equal(new Set(projects.map(p=>p.id)).size,projects.length);
-  for(const p of projects){assert.ok(fs.existsSync(`work/${p.id}/index.html`));assert.ok(fs.existsSync(`assets/projects/${p.image}`));assert.match(p.source,/^https:\/\//);assert.ok(p.limit.length>50);}
+  for(const p of projects){assert.ok(fs.existsSync(`work/${p.id}/index.html`));assert.ok(fs.existsSync(`assets/projects/${p.image}`));assert.match(p.source,/^https:\/\//);assert.ok(p.limit.length>50);for(const hour of p.animation||[])assert.ok(fs.existsSync(`assets/projects/shadow-frames/${hour}.png`),`Missing animation frame ${hour}`);}
 });
 
 test('Model output can select evidence but cannot introduce unsupported claims', async()=>{

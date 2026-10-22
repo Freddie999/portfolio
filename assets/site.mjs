@@ -66,3 +66,45 @@ if (canvas) {
   new ResizeObserver(resize).observe(canvas.parentElement);
   resize(); update();
 }
+
+// Hourly images keep real frame-by-frame pause available in every browser.
+const shadowAnimation = document.querySelector('[data-shadow-animation]');
+if (shadowAnimation) {
+  const image = shadowAnimation.querySelector('img');
+  const button = document.querySelector('#shadow-play');
+  const time = document.querySelector('#shadow-time');
+  const status = document.querySelector('#shadow-animation-status');
+  const frames = shadowAnimation.dataset.frames.split('|');
+  const hours = shadowAnimation.dataset.hours.split('|');
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  let wantedPlaying = !reducedMotion.matches, visible = false, ready = false, failed = false;
+  let frameIndex = hours.indexOf('12'), timer = null, loading = null;
+  function advance() {
+    frameIndex = (frameIndex + 1) % frames.length;
+    image.src = frames[frameIndex];
+    time.textContent = `${hours[frameIndex]}:00 EDT`;
+    image.alt = `Simulated shadows across a Philadelphia surface-model tile at ${hours[frameIndex]}:00 EDT on September 15, 2025.`;
+  }
+  function sync() {
+    clearInterval(timer);timer=null;
+    button.textContent = wantedPlaying ? 'Pause animation' : 'Play animation';
+    button.setAttribute('aria-pressed',String(wantedPlaying));
+    if (!wantedPlaying || !visible || document.hidden || failed) return;
+    if (!ready) {
+      if (!loading) {
+        status.textContent='Loading hourly maps…';
+        loading=Promise.all(frames.map(src=>new Promise((resolve,reject)=>{
+          const frame=new Image();frame.onload=resolve;frame.onerror=reject;frame.src=src;
+        }))).then(()=>{ready=true;status.textContent='08:00–17:00 EDT · Loops every 8 seconds';sync();})
+          .catch(()=>{failed=true;wantedPlaying=false;button.disabled=true;status.textContent='Animation unavailable · Still image shown';sync();});
+      }
+      return;
+    }
+    timer=setInterval(advance,800);
+  }
+  button.addEventListener('click',()=>{wantedPlaying=!wantedPlaying;sync();});
+  reducedMotion.addEventListener('change',()=>{if(reducedMotion.matches){wantedPlaying=false;sync();}});
+  document.addEventListener('visibilitychange',sync);
+  new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;sync();},{threshold:.1}).observe(shadowAnimation);
+  sync();
+}
