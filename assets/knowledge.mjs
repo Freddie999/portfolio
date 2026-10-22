@@ -1,4 +1,4 @@
-import { projects } from './projects.mjs';
+import { projects } from './projects.mjs?v=healthcare-20261021';
 
 export const knowledge = [
   { id: 'background', title: 'Background and experience', tags: 'Frederick Freddie Abalo about biography Ghana Zipline experience career geospatial engineer mapping medical delivery flight planning spatial data review frontend backend web applications APIs React TypeScript Go Python databases',
@@ -14,6 +14,7 @@ const aliases = { classification: ['classifier', 'cnn'], limitations: ['limits']
 export function retrieve(question, limit = 3) {
   if (/\b(flight planning|mapping tools|spatial.data review)\b/i.test(question)) return knowledge.filter(d => d.id === 'background').map(d => ({...d, score: 100}));
   const namedProjects = [
+    ['healthcare-access', /healthcare|health care|health centres|health centers|health posts|walking time|pmtiles|\bh3\b/i],
     ['land-cover', /eurosat|land.cover|landscape|satellite|classifier|classification|cnn/i],
     ['blood-shortcut', /blood|shortcut|ruli|drone delivery|medical.delivery/i],
     ['terrain-explorer', /terrain|elevation|ascent|route explorer/i],

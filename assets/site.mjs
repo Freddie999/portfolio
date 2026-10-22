@@ -1,4 +1,4 @@
-import './assistant.mjs?v=experience-20261021b';
+import './assistant.mjs?v=healthcare-20261021';
 const menu = document.querySelector('.menu-toggle');
 menu?.addEventListener('click', () => {
   const expanded = menu.getAttribute('aria-expanded') === 'true';

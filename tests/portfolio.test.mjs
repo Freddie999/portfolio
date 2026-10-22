@@ -8,6 +8,7 @@ import { retrieve, selectionRequest } from '../assets/knowledge.mjs';
 test('Retrieval finds source-backed projects and declines unrelated questions',()=>{
   assert.equal(retrieve('How accurate was the EuroSAT land-cover classifier?')[0].id,'land-cover');
   assert.deepEqual(retrieve('What did Frederick learn from EuroSAT classification?').map(d=>d.id), ['land-cover']);
+  assert.equal(retrieve('Rwanda healthcare access dashboard')[0].id,'healthcare-access');
   assert.equal(retrieve('Tell me about Zipline experience')[0].id,'background');
   assert.equal(retrieve('How can I contact Frederick?')[0].id,'contact');
   assert.equal(retrieve('Explain quantum entanglement and neutron stars').length,0);
@@ -23,7 +24,7 @@ test('Grounding retains team credits, uncertainty and model-evaluation limits',(
 });
 function htmlFiles(dir){return fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.name==='.git'||e.name==='node_modules'?[]:e.isDirectory()?htmlFiles(path.join(dir,e.name)):e.name.endsWith('.html')?[path.join(dir,e.name)]:[]);}
 test('Every generated page resolves local assets and routes under GitHub Pages',()=>{
-  const root=path.resolve('.');const files=htmlFiles(root);assert.equal(files.length,11);
+  const root=path.resolve('.');const files=htmlFiles(root);assert.equal(files.length,projects.length+5);
   for(const file of files){const text=fs.readFileSync(file,'utf8');assert.match(text,/<h1[ >]/,file);assert.match(text,/aria-labelledby="assistant-title"/,file);
     for(const [,value] of text.matchAll(/(?:href|src)="([^"]+)"/g)){
       if(/^(https?:|mailto:|data:|#)/.test(value))continue;
@@ -34,8 +35,8 @@ test('Every generated page resolves local assets and routes under GitHub Pages',
     for(const [tag] of text.matchAll(/<img\b[^>]+>/g))assert.match(tag,/alt="[^"]+"/,file);
   }
 });
-test('Six project records have distinct case studies and inspectable sources',()=>{
-  assert.equal(new Set(projects.map(p=>p.id)).size,6);
+test('Project records have distinct case studies and inspectable sources',()=>{
+  assert.equal(new Set(projects.map(p=>p.id)).size,projects.length);
   for(const p of projects){assert.ok(fs.existsSync(`work/${p.id}/index.html`));assert.ok(fs.existsSync(`assets/projects/${p.image}`));assert.match(p.source,/^https:\/\//);assert.ok(p.limit.length>50);}
 });
 

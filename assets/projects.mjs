@@ -1,5 +1,29 @@
 export const projects = [
   {
+  "id": "healthcare-access",
+  "title": "Rwanda Healthcare Access Explorer",
+  "short": "Exploring the geography of access to care.",
+  "domain": "Mapping",
+  "type": "Academic project",
+  "tools": [
+    "JavaScript",
+    "MapLibre GL JS",
+    "PMTiles",
+    "H3"
+  ],
+  "image": "healthcare-access.jpg",
+  "alt": "Rwanda healthcare dashboard showing a hexagonal walking-time map, facility filters, and estimated population totals.",
+  "summary": "An exploratory dashboard linking modeled walking times to healthcare facilities with estimated population across Rwanda.",
+  "question": "Which areas combine longer modeled walks to healthcare with larger estimated populations?",
+  "approach": "Built for my JavaScript for Planners course, the dashboard combines a Rwanda subset of the Fika Safe Access Scorecard with MapLibre GL JS, PMTiles, H3, and a CSV attribute table. The 24,547 unique H3 cells connect the map to facility-specific walking-time filters, population summaries, and a list of up to ten matching areas ordered by estimated population. Selecting an area links its details with a map highlight.",
+  "result": "A deployed interactive application with three facility types, adjustable walking-time thresholds, linked area selection, population-ranked results, and reset and empty-result states. Summary totals cover all matching cells in the dataset, including those outside the current map view.",
+  "limit": "An academic, exploratory tool for shortlisting areas for further investigation. Walking times are modeled, not observed patient journeys; the source no_sites scenario meaning, data dates, and reuse terms remain unconfirmed. Population totals are estimates, cells are not clipped to Rwanda’s border, and zero travel times are excluded as uncertain. Population ranking is not an intervention-priority score or a validated facility-location recommendation.",
+  "role": "Dashboard design and implementation, spatial-data preparation and integration, vector-tile mapping, filtering, linked interactions, and source documentation.",
+  "demo": "https://freddie999.github.io/dashboard-project/",
+  "code": "https://github.com/Freddie999/dashboard-project",
+  "source": "https://github.com/Freddie999/dashboard-project#readme"
+},
+  {
     id: 'blood-shortcut', title: 'When blood takes a shortcut', short: 'A shorter route to care.',
     domain: 'Mapping', type: 'Academic project', tools: ['JavaScript', 'Leaflet', 'GeoJSON'],
     image: 'blood-shortcut.jpg', alt: 'The orange road route and turquoise flight path from Muhanga to Ruli in Rwanda.',
