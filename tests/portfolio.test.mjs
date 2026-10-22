@@ -12,6 +12,8 @@ test('Retrieval finds source-backed projects and declines unrelated questions',(
   assert.equal(retrieve('Is the shadow simulation machine learning?')[0].id,'shadow-simulation');
   assert.match(retrieve('shadow analysis')[0].text,/not machine learning/);
   assert.equal(projects.find(p=>p.id==='shadow-simulation').domain,'Mapping');
+  assert.equal(retrieve('PPA Assignment 4 poverty prediction')[0].id,'poverty-prediction');
+  assert.match(retrieve('Predicting Philadelphia poverty rates')[0].text,/8.89 percentage points/);
   assert.equal(retrieve('Tell me about Zipline experience')[0].id,'background');
   assert.equal(retrieve('How can I contact Frederick?')[0].id,'contact');
   assert.equal(retrieve('Explain quantum entanglement and neutron stars').length,0);

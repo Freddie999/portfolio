@@ -1,4 +1,4 @@
-import { projects } from './projects.mjs?v=shadow-20261021';
+import { projects } from './projects.mjs?v=ppa4-20261021';
 
 export const knowledge = [
   { id: 'background', title: 'Background and experience', tags: 'Frederick Freddie Abalo about biography Ghana Zipline experience career geospatial engineer mapping medical delivery flight planning spatial data review frontend backend web applications APIs React TypeScript Go Python databases',
@@ -13,12 +13,14 @@ const stop = new Set('a an and are as at be can could do does for from he her hi
 const aliases = { classification: ['classifier', 'cnn'], limitations: ['limits'], accurate: ['accuracy'], ai: ['cnn', 'pytorch', 'classification'], ml: ['cnn', 'pytorch'], neural: ['cnn'], satellite: ['eurosat', 'land'], imagery: ['eurosat'], coding: ['python', 'javascript'], js: ['javascript'], postgres: ['postgis'], school: ['pennsylvania'], study: ['academic'], education: ['pennsylvania'], job: ['career', 'hiring'], drone: ['blood', 'zipline'], blood: ['shortcut'], compare: ['comparison'] };
 export function retrieve(question, limit = 3) {
   if (/\b(flight planning|mapping tools|spatial.data review)\b/i.test(question)) return knowledge.filter(d => d.id === 'background').map(d => ({...d, score: 100}));
+  if (/poverty.predict|predict.*poverty|ppa.*(?:4|four)|public policy analytics.*(?:4|four)/i.test(question)) return knowledge.filter(d => d.id === 'poverty-prediction').map(d => ({...d, score: 100}));
   const namedProjects = [
     ['shadow-simulation', /shadow|shade|pycuda|ray.casting/i],
     ['healthcare-access', /healthcare|health care|health centres|health centers|health posts|walking time|pmtiles|\bh3\b/i],
     ['land-cover', /eurosat|land.cover|landscape|satellite|classifier|classification|cnn/i],
     ['blood-shortcut', /blood|shortcut|ruli|drone delivery|medical.delivery/i],
     ['terrain-explorer', /terrain|elevation|ascent|route explorer/i],
+    ['poverty-prediction', /poverty.predict|predict.*poverty|feature engineering|ppa.*(?:4|four)|public policy analytics.*(?:4|four)/i],
     ['poverty-change', /poverty|acs|sampling uncertainty/i],
     ['housing-values', /housing|house values|house prices|regression/i],
     ['spatial-api', /validation api|spatial.api|geojson validation|fastapi/i]

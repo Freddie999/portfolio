@@ -124,5 +124,30 @@ export const projects = [
   "demo": "https://github.com/Freddie999/ai-urban-sustainability/blob/main/assignments/homework3/homework3-output/2025-09-15/shadows_08-17.gif",
   "code": "https://github.com/Freddie999/ai-urban-sustainability/blob/main/assignments/homework3/Homework3.ipynb",
   "source": "https://github.com/Freddie999/ai-urban-sustainability/blob/main/assignments/homework3/Homework3.ipynb"
+},
+  {
+  "id": "poverty-prediction",
+  "title": "Predicting Philadelphia Poverty Rates",
+  "short": "Which spatial features actually help prediction?",
+  "domain": "Machine learning",
+  "type": "Academic project",
+  "tools": [
+    "R",
+    "sf",
+    "tidycensus",
+    "caret",
+    "Linear regression"
+  ],
+  "image": "poverty-prediction.png",
+  "alt": "In-sample residual map for a Philadelphia poverty-rate model, with red tracts higher than predicted and blue tracts lower than predicted.",
+  "summary": "Comparing ACS baselines, spatial features, and transformations to see what improves tract-level poverty-rate prediction.",
+  "question": "Do spatial features improve predictions of Philadelphia tract-level poverty rates beyond an ACS baseline?",
+  "approach": "For Public Policy Analytics Assignment 4, I used the course scaffold and cross-validation helper to compare seven candidate linear-regression models on the same 387 Philadelphia tracts and ten random folds. The outcome is the 2019–2023 ACS poverty-rate estimate. Predictors combine ACS characteristics with 2021–2023 residential-burglary and shooting-victim records accessed through the Carto API. Spatial features include densities and nearest-record distances; candidate transformations include logs, a squared term, and distance categories.",
+  "result": "The selected log-density model had a reported ten-fold CV RMSE of 8.89 percentage points, compared with 9.05 for the ACS baseline—a modest improvement. Burglary density alone worsened RMSE to 9.09. The baseline and final in-sample residual maps still show geographic clusters of over- and under-prediction.",
+  "limit": "An academic predictive-modeling exercise, not a causal explanation of poverty or a tool for allocating services to individual tracts. ACS estimates have sampling uncertainty, and recorded incidents reflect reporting and enforcement patterns. Model selection and comparison reuse the same random CV folds; no independent test set or spatially blocked validation is reported. The small improvement may not generalize to geographically separate areas. Residual maps show in-sample errors, not held-out predictions.",
+  "role": "Outcome and reliability assessment, data assembly, spatial feature engineering, model comparisons and transformations, residual mapping, and interpretation within the course-provided workflow.",
+  "demo": "https://freddie999.github.io/MUSA-5080-portfolio/assignments/assignment4.html",
+  "code": "https://github.com/Freddie999/MUSA-5080-portfolio/blob/main/assignments/assignment4.qmd",
+  "source": "https://freddie999.github.io/MUSA-5080-portfolio/assignments/assignment4.html"
 }
 ];

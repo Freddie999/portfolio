@@ -2,7 +2,7 @@
 
 [Live portfolio](https://freddie999.github.io/portfolio/) · [GitHub profile](https://github.com/Freddie999)
 
-A minimalist portfolio with system typography, a restrained palette, an optional animated spatial field, a filterable work index, eight project case studies, background and contact pages, and a portfolio guide with text and voice controls.
+A minimalist portfolio with system typography, a restrained palette, an optional animated spatial field, a filterable work index, nine project case studies, background and contact pages, and a portfolio guide with text and voice controls.
 
 ## Develop and publish
 
