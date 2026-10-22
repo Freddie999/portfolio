@@ -99,5 +99,29 @@ export const projects = [
     limit: 'A local engineering demonstration using synthetic survey features. It does not provide authentication, tenant isolation, automatic geometry repair, reprojection, or a deployed public API.',
     role: 'Validation, transactional ingestion, spatial queries, demonstration interface, and tests.',
     demo: '', code: 'https://github.com/Freddie999/spatial-validation-api', source: 'https://github.com/Freddie999/spatial-validation-api'
-  }
+  },
+  {
+  "id": "shadow-simulation",
+  "title": "Philadelphia Shadow Simulation",
+  "short": "How shade changes through the day.",
+  "domain": "Mapping",
+  "type": "Academic project",
+  "tools": [
+    "Python",
+    "PyCUDA",
+    "Rasterio",
+    "NumPy"
+  ],
+  "image": "shadow-simulation.png",
+  "alt": "Simulated noon shadows across a Philadelphia surface-model tile on September 15, 2025, with shadow and sunlit areas labeled.",
+  "summary": "A GPU-based ray-casting simulation of hourly shadows across a Philadelphia digital surface model.",
+  "question": "How does the pattern of shade change across a Philadelphia surface-model tile during the day?",
+  "approach": "Adapted from Xiaojiang Li’s PyCUDA course notebook, the analysis uses a digital surface model and solar elevation and azimuth inputs to calculate sunlit and shadowed pixels. Python coordinates the raster processing and CUDA ray casting. Elevations and pixel spacing are converted to meters using an assumed US-survey-foot source unit, with a grid-convergence adjustment for the sun direction.",
+  "result": "Ten hourly shadow maps from 08:00 to 17:00 EDT on September 15, 2025, plus an animation showing the changing shadow pattern. The notebook and exported images are available for inspection.",
+  "limit": "This is a deterministic spatial simulation, not machine learning: it has no model training or learned parameters. It adapts Xiaojiang Li’s course notebook and covers one DSM tile on one day. Vertical units are assumed because the input does not specify them, and objects outside the tile cannot cast shadows into it. No ground-truth accuracy assessment or CPU/GPU speed benchmark is reported.",
+  "role": "Course-notebook adaptation, hourly scenario setup, unit and sun-direction handling, and output presentation.",
+  "demo": "https://github.com/Freddie999/ai-urban-sustainability/blob/main/assignments/homework3/homework3-output/2025-09-15/shadows_08-17.gif",
+  "code": "https://github.com/Freddie999/ai-urban-sustainability/blob/main/assignments/homework3/Homework3.ipynb",
+  "source": "https://github.com/Freddie999/ai-urban-sustainability/blob/main/assignments/homework3/Homework3.ipynb"
+}
 ];
