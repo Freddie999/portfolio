@@ -1,4 +1,4 @@
-import { projects } from './projects.mjs?v=ppa4-20261021';
+import { projects } from './projects.mjs?v=homework6-20261110';
 
 export const knowledge = [
   { id: 'background', title: 'Background and experience', tags: 'Frederick Freddie Abalo about biography Ghana Zipline experience career geospatial engineer mapping medical delivery flight planning spatial data review frontend backend web applications APIs React TypeScript Go Python databases',
@@ -15,6 +15,7 @@ export function retrieve(question, limit = 3) {
   if (/\b(flight planning|mapping tools|spatial.data review)\b/i.test(question)) return knowledge.filter(d => d.id === 'background').map(d => ({...d, score: 100}));
   if (/poverty.predict|predict.*poverty|ppa.*(?:4|four)|public policy analytics.*(?:4|four)/i.test(question)) return knowledge.filter(d => d.id === 'poverty-prediction').map(d => ({...d, score: 100}));
   const namedProjects = [
+    ['land-cover-segmentation', /segmentation|u.net|naip|bare.earth|homework\s*6|assignment\s*6/i],
     ['shadow-simulation', /shadow|shade|pycuda|ray.casting/i],
     ['healthcare-access', /healthcare|health care|health centres|health centers|health posts|walking time|pmtiles|\bh3\b/i],
     ['land-cover', /eurosat|land.cover|landscape|satellite|classifier|classification|cnn/i],

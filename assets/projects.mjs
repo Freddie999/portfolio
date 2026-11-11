@@ -1,5 +1,24 @@
 export const projects = [
   {
+    id: 'land-cover-segmentation', title: 'Mapping Philadelphia, pixel by pixel', short: 'Seven classes. Separate geographic tests.',
+    domain: 'Machine learning', type: 'Academic project', tools: ['Python', 'PyTorch', 'U-Net', 'Rasterio'],
+    image: 'land-cover-segmentation.png', alt: 'A held-out Philadelphia tile shown as NAIP imagery, reference land-cover labels, and seven-class U-Net predictions, with a shared class legend.',
+    summary: 'A four-band U-Net for Philadelphia land-cover mapping, with geographic holdouts, rare-class error review, and overlapping predictions.',
+    question: 'How well can a U-Net distinguish seven land-cover classes in Philadelphia when training and evaluation areas are kept apart?',
+    approach: 'For Assignment 6 in AI for Urban Sustainability, I adapted Xiaojiang Li’s Lab 9 tutorial into a four-input, seven-class ResNet-18 U-Net. Training and validation used separate 2,048-pixel blocks with at least 512-pixel gaps from held-out areas. I reviewed bare-earth errors, accepted 28 visually checked training crops, compared cross-entropy with cross-entropy plus Dice using two data-order seeds, and selected 50% overlapping probability blending on validation results.',
+    result: 'On the original test areas, accuracy rose from 73.97% to 74.63%, mean IoU from 0.550 to 0.564, and bare-earth IoU from 0.032 to 0.062. On two newly reserved areas, the updated pipeline scored 65.63% accuracy and 0.429 mean IoU, compared with 64.83% and 0.409 for the previous model on those same pixels. Validation seam errors fell from 25.8% to 4.7% with overlap. The Dice loss change alone did not consistently improve bare earth.',
+    limit: 'Performance varies by location. The original-area result is a follow-up with the model and inference settings unchanged; the new areas were evaluated after validation-based selection. Bare earth remains weak, visually checked additions are mostly sports infields, and source dates and exact band identities are unconfirmed. Reference-label disagreements remain. These maps describe surface cover, not functional land use or verified citywide accuracy. The published notebook records the completed experiments; the large training-data and model files are not bundled with this web report.',
+    role: 'Multiclass label preparation, spatial splitting, model training and controlled comparisons, visual error review, evaluation, and georeferenced map export. Adapted from Xiaojiang Li’s course materials.',
+    demo: 'https://freddie999.github.io/portfolio/reports/land-cover-segmentation/Homework6.html',
+    code: 'https://github.com/Freddie999/portfolio/blob/main/reports/land-cover-segmentation/Homework6.ipynb',
+    source: 'https://freddie999.github.io/portfolio/reports/land-cover-segmentation/Homework6.html',
+    downloads: [
+      { label: 'Land-cover GeoTIFF', href: '../../reports/land-cover-segmentation/final_land_cover.tif' },
+      { label: 'Class legend', href: '../../reports/land-cover-segmentation/legend.json' },
+      { label: 'Per-class IoU', href: '../../reports/land-cover-segmentation/per_class_iou.csv' }
+    ]
+  },
+  {
   "id": "healthcare-access",
   "title": "Rwanda Healthcare Access Explorer",
   "short": "Exploring the geography of access to care.",

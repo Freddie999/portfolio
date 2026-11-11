@@ -1,4 +1,4 @@
-import { retrieve, selectionRequest, resolveSelection } from './knowledge.mjs?v=ppa4-20261021';
+import { retrieve, selectionRequest, resolveSelection } from './knowledge.mjs?v=homework6-20261110';
 const dialog = document.querySelector('#assistant');
 if (dialog) {
   const input = document.querySelector('#chat-input');

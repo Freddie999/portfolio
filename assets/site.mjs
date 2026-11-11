@@ -1,4 +1,4 @@
-import './assistant.mjs?v=ppa4-20261021';
+import './assistant.mjs?v=homework6-20261110';
 const menu = document.querySelector('.menu-toggle');
 menu?.addEventListener('click', () => {
   const expanded = menu.getAttribute('aria-expanded') === 'true';

@@ -1,0 +1,48 @@
+{
+  "nodata": 255,
+  "source": "https://www.pasda.psu.edu/uci/FullMetadataDisplay.aspx?file=PhiladelphiaLandCoverRaster2018.xml",
+  "classes": [
+    {
+      "training_id": 0,
+      "source_code": 1,
+      "name": "Tree canopy",
+      "color": "#226d37"
+    },
+    {
+      "training_id": 1,
+      "source_code": 2,
+      "name": "Grass/shrub",
+      "color": "#97cc6b"
+    },
+    {
+      "training_id": 2,
+      "source_code": 3,
+      "name": "Bare earth",
+      "color": "#c5a46d"
+    },
+    {
+      "training_id": 3,
+      "source_code": 4,
+      "name": "Water",
+      "color": "#3186ce"
+    },
+    {
+      "training_id": 4,
+      "source_code": 5,
+      "name": "Buildings",
+      "color": "#d84c4c"
+    },
+    {
+      "training_id": 5,
+      "source_code": 6,
+      "name": "Roads/railroads",
+      "color": "#55545b"
+    },
+    {
+      "training_id": 6,
+      "source_code": 7,
+      "name": "Other paved",
+      "color": "#b7b9c0"
+    }
+  ]
+}
